@@ -51,7 +51,7 @@ async function connectToDatabase() {
 app.locals.publicDir = publicDir;
 
 app.use(cors({
-  origin: "https://your-frontend.onrender.com"
+  origin: "https://ws06-react-kqtd.onrender.com"
 }));
 
 app.use(express.json());
