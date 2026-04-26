@@ -7,6 +7,8 @@ import PostCard from '../components/PostCard.jsx'
 // 2) In useEffect, call GET /api/posts.
 // 3) Show loading and error states.
 // 4) Map posts into PostCard components.
+const API = import.meta.env.VITE_API_URL;
+
 function HomePage() {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -15,7 +17,7 @@ function HomePage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('/api/posts');
+        const response = await fetch(`${API}/api/posts`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch posts');

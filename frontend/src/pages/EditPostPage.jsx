@@ -8,6 +8,8 @@ import PostForm from '../components/PostForm.jsx'
 // 2) Pass fetched data to PostForm as initialData.
 // 3) On submit, send PUT /api/posts/:id.
 // 4) Navigate back to /posts/:id after successful save.
+const API = import.meta.env.VITE_API_URL;
+
 function EditPostPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -20,7 +22,7 @@ function EditPostPage() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`/api/posts/${id}`);
+        const response = await fetch(`${API}/api/posts/${id}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch post');
@@ -43,7 +45,7 @@ function EditPostPage() {
     setError(null)
 
     try {
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`${API}/api/posts/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

@@ -7,6 +7,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 // 2) Render title, author, date, and content.
 // 3) Add delete handler with DELETE /api/posts/:id.
 // 4) Navigate back to /blog after successful delete.
+const API = import.meta.env.VITE_API_URL;
+
 function PostPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -19,7 +21,7 @@ function PostPage() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`/api/posts/${id}`);
+        const response = await fetch(`${API}/api/posts/${id}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch post');
@@ -42,7 +44,7 @@ function PostPage() {
     setError(null)
 
     try {
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`${API}/api/posts/${id}`, {
         method: 'DELETE'
       });
 

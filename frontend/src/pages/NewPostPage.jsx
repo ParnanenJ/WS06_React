@@ -8,6 +8,8 @@ import PostForm from '../components/PostForm.jsx'
 // 2) POST JSON body to /api/posts.
 // 3) On success, navigate to /posts/:id.
 // 4) Show an error message on failure.
+const API = import.meta.env.VITE_API_URL;
+
 function NewPostPage() {
   const navigate = useNavigate()
   const [submitting, setSubmitting] = useState(false)
@@ -18,7 +20,7 @@ function NewPostPage() {
     setError(null)
 
     try {
-      const response = await fetch('/api/posts', {
+      const response = await fetch(`${API}/api/posts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
