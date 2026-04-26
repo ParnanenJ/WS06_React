@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const cors = require('cors');
+
 //const pagesRouter = require('./routes/pages.js');
 const postsRouter = require('./routes/posts');
 
@@ -47,6 +49,11 @@ async function connectToDatabase() {
 }
 
 app.locals.publicDir = publicDir;
+
+app.use(cors({
+  origin: "https://your-frontend.onrender.com"
+}));
+
 app.use(express.json());
 app.use(express.static(publicDir));
 
