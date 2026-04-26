@@ -1,0 +1,1 @@
+Tämä repositorio on tarkoitettu Laurean Full stack kurssin ws6 tehtävää varten.
